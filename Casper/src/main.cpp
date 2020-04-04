@@ -1,7 +1,7 @@
 /************************************************************************************************** 
  Casper - software development library
   
- (c) 2019 Michal Elias
+ (c) 2020 Michal Elias
   
  This file is part of the Casper C++ library.
   
@@ -33,6 +33,9 @@
 #include "timeStamp.h"
 #include "setting.h"
 
+#include "managerDft.h"
+#include "managerSpectrogram.h"
+
 using json = nlohmann::json;
 
 using namespace std;
@@ -47,7 +50,7 @@ int main(int argc, char ** argv)
   clock_t start = clock();
   
   /// Set&Get Version
-  t_version version("0","0","19", "alpha");
+  t_version version("0","0","1", "alpha");
   LOG1(":.main::*** Version: " , version.Version());
   LOG1(":.main::*** Compiled: ", COMPILED);
   
@@ -68,7 +71,8 @@ int main(int argc, char ** argv)
   
   string outputName = setting->getOutputName();
   string outputHist = setting->getOutputHist();
-  string statOnOff = setting->getStatOnOff();
+  string dftOnOff = setting->getDftOnOff();
+  string spectrogramOnOff = setting->getSpectrogramOnOff();
   
   bool convTdDd = setting->getInputConvTdDd(); //cout << convTdDd << endl;
   
@@ -126,16 +130,6 @@ int main(int argc, char ** argv)
     ERR(":.main::...Data container is empty!"); return -1; 
   }
   
-  /*TEST LOADING*/
-  //tstLoad();
-  /*TEST AUTOCOV*/
-  //tstAutoCov();
-  /*TEST MJD*/
-  //tstMJD();
-  /*SYNTHETIC SHIFTS*/
-  //tstSYNTH();
-  
-  
   /// Casper::DATA Filling to the coredata class
   ofile << "# Software: Casper\n";
   ofile << "# Version: " << version.Version() << "\n";
@@ -155,7 +149,15 @@ int main(int argc, char ** argv)
     }
 
     /// Casper::Call Applications
-    //if (statOnOff     == "on") { LOG1(":.main::...Request for appStat");     new t_appStat(setting, coredata);     }
+    if (dftOnOff == "on") {
+      
+      LOG1(":.main::...Request for DFT (Discrete Fourier Transformation)"); new t_managerDft(setting, coredata);
+    }
+    
+    if (spectrogramOnOff == "on") {
+      
+      LOG1(":.main::...Request for Spectrogram"); new t_managerSpectrogram(setting, coredata);
+    }
 
     /// Delete
     if ( coredata ) delete coredata ;
@@ -175,13 +177,28 @@ int main(int argc, char ** argv)
     /// Casper::Call Applications
     if ( convTdDd ) {
 
-      //if (statOnOff     == "on") { LOG1(":.main::...Request for appStat");     new t_appStat(setting, Coredata);     }
+      if (dftOnOff == "on") { 
+        
+        LOG1(":.main::...Request for DFT (Discrete Fourier Transformation)"); new t_managerDft(setting, Coredata);
+      }
+      
+      if (spectrogramOnOff == "on") {
+        
+        LOG1(":.main::...Request for Spectrogram"); new t_managerSpectrogram(setting, Coredata);
+      }
     
     }
     else {
       
-      //if (statOnOff     == "on") { LOG1(":.main::...Request for appStat");     new t_appStat(setting, coredata);     }
-
+      if (dftOnOff == "on") { 
+        
+        LOG1(":.main::...Request for DFT (Discrete Fourier Transformation)"); new t_managerDft(setting, coredata);
+      }
+      
+      if (spectrogramOnOff == "on") {
+        
+        LOG1(":.main::...Request for Spectrogram"); new t_managerSpectrogram(setting, coredata);
+      }
     }
     
     /// Delete
@@ -222,6 +239,5 @@ int main(int argc, char ** argv)
       t_help lh; lh.lokiHelp();
    }
   
-   
   return 0;
 }

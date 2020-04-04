@@ -4,10 +4,10 @@
 /**************************************************************************************************
  @Founder: Michal Elias
  @Linux Ubuntu 18.4.2 LTS
- @Last revision: 2017-03-06 10:08:45 Author: Michal Elias  
+ @Last revision: 2020-02-01 21:35:15 Author: Michal Elias  
 
  @Brief: Setting
- @Details: Methods read settings from json configuration.
+ @Details: Method reads settings from json configuration.
   
  @Reference:
 ***************************************************************************************************/
@@ -33,27 +33,15 @@ class t_setting
    string getOutputHist();   
    string getOutputName();
    string getPlotOnOff();
-   string getStatOnOff();
+   string getDftOnOff();
+   string getSpectrogramOnOff();   
    
-   double getIqrCnfd();
-   double getConfInter();
-   double getProbCritVal();
-   double getLimitDependence();
    double getInputResolution();
    
-   int    getRegModel();
-   int    getRegOrder();
    int    getOutMethod();
-   int    getConstHour();
    int    getInputDataCol();
    
-   bool   getElimTrend();
-   bool   getElimSeas();
    bool   getInputConvTdDd();
-   bool   getRemSeasModel();
-   bool   getRemMedianModel();
-   bool   getRemReferenceModel();
-   bool   getFixedHour();
    
  protected:
    
@@ -61,28 +49,16 @@ class t_setting
    
    string _outputName;
    string _outputHist;
-   string _statOnOff;
-   string _regressOnOff;
-   string _medianOnOff;
-   string _referenceOnOff;
+   string _dftOnOff;
+   string _spectrogramOnOff;   
    string _plotOnOff;
-   string _detectionOnOff;
    
    double _iqrCnfd;   
-   double _probCritVal;
-   double _limitDepedence;
    double _inputResolution;
    
-   int    _regModel;
-   int    _regOrder;
-   int    _constHour;
    int    _inputDataCol;
    
-   bool   _elimTrend;
-   bool   _elimSeas;
    bool   _inputConvTdDd;
-   bool   _fixedHour;
-   
 };
 
 #endif

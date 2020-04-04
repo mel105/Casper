@@ -11,11 +11,13 @@
     "inputConvTdDd": true
   },
     "output": {
-    "outputName": "LOKI.txt",
-    "outputHist": "LOKI.hst"
+    "outputName": "00Casper.txt",
+    "outputHist": "00Casper.hst"
   },
-  "stat": {
-    "statOnOff": "on",
-    "iqrCnfd": 2.5
+  "dft": {
+    "dftOnOff": "on"
+  },
+  "spectrogram": {
+    "spectrogramOnOff": "on"
   }
 }

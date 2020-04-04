@@ -49,172 +49,6 @@ void t_plot::acf()
    plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/acf.pt\' u 1:2 not ' ' w impulses lc rgb 'black' lw 7");
 }
 
-void t_plot::hTime()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/hTime.eps";
-   
-   // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 3.0,1.0");
-   plot("set style fill solid 0.5");
-  //
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/homogenDD\' u 1:2 not ' ' w l lc rgb 'black'");
-}
-
-void t_plot::hDeseas()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/hDeseas.eps";
-   
-   // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 3.0,1.0");
-   plot("set style fill solid 0.5");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/homogenDD\' u 1:3 not ' ' w l lc rgb 'black'");
-}
-
-void t_plot::hTK()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/hTK.eps";
-   
-   // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 3.0,1.0");
-   plot("set style fill solid 0.5");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/homogenDD\' u 1:4 not ' ' w l lc rgb 'black' ,\'' u 1:5 not ' ' w l lc rgb 'red' lw 3");
-}
-
-
-
-/// @Detail
-///   - plot regression model with outliers
-void t_plot::outlier()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/outliers.eps";
-   
-   // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 3.0,1.0");
-   plot("set style fill solid 0.5");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/outliersDD\' u 1:2 t 'Original TS' w l lc rgb 'black' ,\'' u 1:3 t 'Regression' w l lc rgb '#09ad00' lw 3 ,\'' u 1:4 not w l lc rgb '#09ad00' lw 1 ,\'' u 1:5 not '' w l lc rgb '#09ad00' lw 1");
-
-}
-
-/// @Detail
-///   - plot trend plot
-void t_plot::trend()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   //          
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/trend.eps";
-   
-  // path to data file
-  // string pathData = "~/Work/gitHub/Casper/Casper/gnu"
-  
-  // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 1.0,1.0");
-   plot("set multiplot layout 2, 1");
-   plot("set style fill solid 0.5");
-   plot("unset xtics");
-   plot("set tmargin 3");
-   plot("set rmargin 3.5");
-   plot("set size 1.0,0.5");
-   plot("set origin 0,0.5");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/trendDD\' u 1:2 t 'Original TS' w p lc rgb 'black' ,\'' u 1:3 t 'Linear trend' w l lc rgb '#09ad00' lw 3");
-   plot("set size 1.0,0.5");
-   plot("set origin 0,0");
-   plot("unset tmargin");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/trendDD\' u 1:4 t 'De-trended TS' w p  lc rgb 'black'");
-   
-   plot("unset multiplot");
- 
-}
-
-void t_plot::median()
-{
-  
-  // declaration
-  t_gnuplot plot;
-  
-  // output
-  string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/median.eps";
-  
-  // plot
-  plot("set term post eps color noenhanced solid 'Helvetica,12'");
-  plot(("set output '"+out+"'").c_str());
-  plot("set size 1.0,1.0");
-  plot("set multiplot layout 2, 1");
-  plot("set style fill solid 0.5");
-  plot("unset xtics");
-  plot("set tmargin 3");
-  plot("set rmargin 3.5");
-  plot("set size 1.0,0.5");
-  plot("set origin 0,0.5");
-  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/medianDD\' u 1:2 t 'Original TS' w l lc rgb 'black' ,\'' u 1:3 t 'Median model' w l lc rgb '#09ad00' lw 3");
-  plot("set size 1.0,0.5");
-  plot("set origin 0,0");
-  plot("unset tmargin");
-  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/medianDD\' u 1:4 t 'De-seasonalised TS' w l  lc rgb 'black'");
-  
-  plot("unset multiplot");
-}
-
-void t_plot::seas()
-{
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/seas.eps";
-   
-   // plot
-   plot("set term post eps color noenhanced solid 'Helvetica,12'");
-   plot(("set output '"+out+"'").c_str());
-   plot("set size 1.0,1.0");
-   plot("set multiplot layout 2, 1");
-   plot("set style fill solid 0.5");
-   plot("unset xtics");
-   plot("set tmargin 3");
-   plot("set rmargin 3.5");
-   plot("set size 1.0,0.5");
-   plot("set origin 0,0.5");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/seasDD\' u 1:2 t 'Original TS' w l lc rgb 'black' ,\'' u 1:3 t 'Reg model' w l lc rgb '#09ad00' lw 3");
-   plot("set size 1.0,0.5");
-   plot("set origin 0,0");
-   plot("unset tmargin");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/seasDD\' u 1:4 t 'De-seasonalised TS' w l  lc rgb 'black'");
-   
-   plot("unset multiplot");
-   
-//   plot(" \' \' u 1:3 t 'Linear trend' w l");
-     
-//   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/trendDD\' u 1:2 t 'Original ts' w l , u 1:3 t 'Linear trend' w l");
-}
-
 void t_plot::line()
 {
    // declaration
@@ -243,55 +77,77 @@ void t_plot::tline()
    plot("set xdata time");
    plot("set timefmt \'%Y-%m-%d %H:%M:%S\'");
    plot("set format x \'%Y\'");
-   plot("set xtics rotate by 0");
-   plot("set xlabel \'TIME\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/line\' u 1:3 not w l");
+  plot("set xtics rotate by 0");
+  plot("set xlabel \'TIME\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
+  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/line\' u 1:3 not w l");
+}
+
+void t_plot::magnitude()
+{
+  
+  // declaration
+  t_gnuplot plot;
+  
+  // output
+  string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/magnitude.eps";
+  
+  // plot
+  plot("set term postscript eps");
+  plot(("set output '"+out+"'").c_str());
+  plot("set xlabel \'Frequency [Hz]\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
+  plot("set ylabel \'Magnitude Spectrum\' offset 1.0,0 rotate by 90 font \'Arial-Bold, bold, 40\'");
+  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/magnitude\' u 1:2 not w l");
 }
 
 
-/// @Detail
-///   - Plot histogram.
-///   - Input: min&max values of histogram
-void t_plot::histogram(const double & min,
-		       const double & max) // eventualne este N?
+void t_plot::phase()
 {
-   // from int to string
-   string MIN; stringstream smin; smin << min; MIN = smin.str();
-   string MAX; stringstream smax; smax << max; MAX = smax.str();   
-   // declaration
-   t_gnuplot plot;
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/histogram.eps";
-   // plot
-   plot("set term postscript eps");
-   plot(("set output '"+out+"'").c_str());
-   plot("n=30");
-   plot("max='"+MAX+"'");
-   plot("min='"+MIN+"'");
-   plot("width=(max-min)/n");
-   plot("hist(x,width)=width*floor(x/width)+width/2.0");
-   plot("set boxwidth width*0.9");
-   plot("set style fill solid 0.5 # fill style");
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/line\' u (hist($2,width)):(1.0) smooth freq w boxes lc rgb \'red\' not");
+  
+  // declaration
+  t_gnuplot plot;
+  
+  // output
+  string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/phase.eps";
+
+  // plot
+  plot("set term postscript eps");
+  plot(("set output '"+out+"'").c_str());
+  plot("set xlabel \'Frequency [Hz]\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
+  plot("set ylabel \'Phase Spectrum\' offset 1.0,0 rotate by 90 font \'Arial-Bold, bold, 40\'");
+  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/phase\' u 1:2 not w l");
 }
 
-/// @Detail
-///   - Plot histogram.
-///   - Input: min&max values of histogram
-void t_plot::boxplot()
+
+void t_plot::realSpec()
 {
-   // declaration
-   t_gnuplot plot;
-   
-   // output
-   string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/boxplot.eps";
-   // plot
-   plot("set term postscript eps");
-   
-   plot("set style fill solid 0.25 border -1");
-   plot("set style boxplot outliers pointtype 7");   
-   plot("set style data boxplot");
-   plot("unset xtics");
-   plot(("set output '"+out+"'").c_str());
-   plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/line\' u (0):2 not");
+  
+  // declaration
+  t_gnuplot plot;
+  
+  // output
+  string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/real.eps";
+  
+  // plot
+  plot("set term postscript eps");
+  plot(("set output '"+out+"'").c_str());
+  plot("set xlabel \'Frequency [Hz]\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
+  plot("set ylabel \'Real Spectrum\' offset 1.0,0 rotate by 90 font \'Arial-Bold, bold, 40\'");
+  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/real\' u 1:2 not w l");
+}
+
+void t_plot::imagSpec()
+{
+  
+  // declaration
+  t_gnuplot plot;
+  
+  // output
+  string out = "~/Work/gitHub/Casper/Casper/gnuplot/eps/imag.eps";
+  
+  // plot
+  plot("set term postscript eps");
+  plot(("set output '"+out+"'").c_str());
+  plot("set xlabel \'Frequency [Hz]\' offset 1.0,0 rotate by 0 font \'Arial-Bold, bold, 40\'");
+  plot("set ylabel \'Imaginary Spectrum\' offset 1.0,0 rotate by 90 font \'Arial-Bold, bold, 40\'");
+  plot("plot \'~/Work/gitHub/Casper/Casper/gnuplot/imag\' u 1:2 not w l");
 }

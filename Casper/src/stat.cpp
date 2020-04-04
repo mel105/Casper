@@ -121,32 +121,31 @@ void t_stat::_calcMode()
    
    map<double, int> frequency;
    
-   for(vector<double>::iterator it = _minmax.begin(); it != _minmax.end(); ++it)
-     {
-	frequency[*it]++;
-     }
+   for(vector<double>::iterator it = _minmax.begin(); it != _minmax.end(); ++it) {
+     
+     frequency[*it]++;
+   }
    
-   vector<double> cetVec, modVec;
+  vector<double> cetVec, modVec;
+  
+  for(map<double, int>::iterator j = frequency.begin(); j != frequency.end(); ++j) {
+    
+    modVec.push_back(j->first);
+    cetVec.push_back(j->second);
+  }
    
-   for(map<double, int>::iterator j = frequency.begin(); j != frequency.end(); ++j)
-     {
-	modVec.push_back(j->first);
-	cetVec.push_back(j->second);
-     }
-   
-   double maxF = *max_element(cetVec.begin(), cetVec.end()); _modeF = maxF;
-   
-   for(unsigned int x = 0; x < cetVec.size(); ++x)
-     {
-	if (cetVec[x] == maxF)
-	  {
+  double maxF = *max_element(cetVec.begin(), cetVec.end()); _modeF = maxF;
+  
+  for(unsigned int x = 0; x < cetVec.size(); ++x) {
+    
+    if (cetVec[x] == maxF) {
+      
 #ifdef DEBUG
-	     cout << "max je "  << cetVec[x] << "  " << modVec[x] << endl;
+      cout << "max je "  << cetVec[x] << "  " << modVec[x] << endl;
 #endif
-	     
-	     _mode.push_back(modVec[x]);
+      _mode.push_back(modVec[x]);
 	  }
-     }
+  }
 }
 
 /// @detail Calc 1st quartile

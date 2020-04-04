@@ -28,15 +28,11 @@ class t_plot
    void acf();     // corelogram
    void line();    // simple line plot
    void tline();
-   void trend();   // multiplot: trend plot
-   void seas();    // multiplot: reg model plot
-   void median();  // median time series plot
-   void outlier(); // outliers identification
-   void hTime();   // simple line plot
-   void hDeseas(); // simple line plot
-   void hTK();     // TK statistics
-   void histogram(const double & min, const double & max);
-   void boxplot();
+   void magnitude();
+   void phase();
+   void imagSpec();
+   void realSpec();
+
    
 };
 

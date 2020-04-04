@@ -1,7 +1,7 @@
 /************************************************************************************************** 
  Casper - software development library
   
- (c) 2019 Michal Elias
+ (c) 2020 Michal Elias
   
  This file is part of the Casper C++ library.
   
@@ -50,9 +50,11 @@ t_setting::t_setting()
   string outputName {casper.getValue<string>({"output", "outputName"})}; _outputName = outputName;
   string outputHist {casper.getValue<string>({"output", "outputHist"})}; _outputHist = outputHist;
   
-  /// Casper::stat
-  string statOnOff {casper.getValue<string>({"stat", "statOnOff"})};  _statOnOff = statOnOff;
-  double iqrCnfd   {casper.getValue<double>({"stat", "iqrCnfd"})};    _iqrCnfd   = iqrCnfd;
+  /// Casper::dft
+  string dftOnOff {casper.getValue<string>({"dft", "dftOnOff"})}; _dftOnOff = dftOnOff;
+  
+  /// Casper::spectrogram
+  string spectrogramOnOff {casper.getValue<string>({"spectrogram", "spectrogramOnOff"})}; _spectrogramOnOff = spectrogramOnOff;
   
   /// Log
   LOG2(":...t_setting::......Folder: ", inputFolder);
@@ -72,6 +74,7 @@ double t_setting::getInputResolution() { return _inputResolution; }
 // output   
 string t_setting::getOutputName() { return _outputName; }
 string t_setting::getOutputHist() { return _outputHist; }
-// statistics
-string t_setting::getStatOnOff() { return _statOnOff; }
-double t_setting::getIqrCnfd() { return _iqrCnfd; }
+// dft
+string t_setting::getDftOnOff() { return _dftOnOff; }
+// spectrogram
+string t_setting::getSpectrogramOnOff() { return _spectrogramOnOff; }
